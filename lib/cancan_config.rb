@@ -1,5 +1,5 @@
 require "cancan_config/version"
-require "cancan_config/define_class"
+require "cancan_config/roles_helper"
 require "cancan_config/ability_config"
 
 module CanCanConfig
