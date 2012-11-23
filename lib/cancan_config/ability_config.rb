@@ -9,7 +9,7 @@ module CanCanConfig
 
       @current_user = user || User.new # guest user (not logged in)
 
-      load_user_roles(@current_user)
+      load_role(user_role.to_s)
     end
 
     def current_user
@@ -18,6 +18,10 @@ module CanCanConfig
 
     def helper(method_name, *args)
       @@helpers.send(method_name, *args)
+    end
+
+    def include_group(name)
+      load_role(name.to_s)
     end
 
     # return group name
@@ -47,8 +51,8 @@ module CanCanConfig
       return true
     end
 
-    def load_user_roles(user)
-      block = @@roles_defined[user_role.to_s]
+    def load_role(name)
+      block = @@roles_defined[name]
       self.instance_eval &block if block
     end
 

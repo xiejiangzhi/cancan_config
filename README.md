@@ -13,6 +13,10 @@ config/cancan_roles.rb
         end
       end
 
+      group :public do
+
+      end
+
       helper do
         def can_manager_question(question, user)
           question.user_id == user.id
