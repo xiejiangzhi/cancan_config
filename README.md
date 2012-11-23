@@ -9,7 +9,7 @@ config/cancan_roles.rb
 
       group Role::CommonUser do
         can [:update, :destroy], File do |file|
-          helper :can_manager_question, file, current_user
+          helper :can_manager_file file, current_user
         end
       end
 
@@ -18,7 +18,7 @@ config/cancan_roles.rb
       end
 
       helper do
-        def can_manager_question(question, user)
+        def can_manager_file(question, user)
           question.user_id == user.id
         end
       end
