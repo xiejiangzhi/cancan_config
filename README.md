@@ -8,6 +8,7 @@ config/cancan_roles.rb
       end
 
       group Role::CommonUser do
+        include_group :public
         can [:update, :destroy], File do |file|
           helper :can_manager_file file, current_user
         end
